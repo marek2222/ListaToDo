@@ -42,7 +42,7 @@ namespace ListaToDo
 
         public static UzytkownikManager Create(IdentityFactoryOptions<UzytkownikManager> options, IOwinContext context) 
         {
-            var manager = new UzytkownikManager(new UserStore<Uzytkownik>(context.Get<ApplicationDbContext>()));
+            var manager = new UzytkownikManager(new UserStore<Uzytkownik>(context.Get<ToDoContext>()));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<Uzytkownik>(manager)
             {
