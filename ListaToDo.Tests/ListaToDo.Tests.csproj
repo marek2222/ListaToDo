@@ -93,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ListaToDo\ListaToDo.csproj">
-      <Project>{DA21A1CC-28E4-4CB4-AB08-161522E6E736}</Project>
+      <Project>{da21a1cc-28e4-4cb4-ab08-161522e6e736}</Project>
       <Name>ListaToDo</Name>
     </ProjectReference>
   </ItemGroup>
