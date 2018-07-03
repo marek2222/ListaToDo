@@ -11,8 +11,8 @@ namespace Repozytorium.Migrations
   {
     public Configuration()
     {
-      AutomaticMigrationsEnabled = false;
-      AutomaticMigrationDataLossAllowed = false;
+      AutomaticMigrationsEnabled = true;
+      AutomaticMigrationDataLossAllowed = true;
     }
 
     protected override void Seed(Repozytorium.Models.ToDoContext context)
@@ -20,9 +20,9 @@ namespace Repozytorium.Migrations
       // Do debugowania metody seed    
       // if (System.Diagnostics.Debugger.IsAttached == false)    
       // System.Diagnostics.Debugger.Launch();    
-      SeedRoles(context);
-      SeedUsers(context);
-      SeedZadania(context);
+      //SeedRoles(context);
+      //SeedUsers(context);
+      //SeedZadania(context);
     }
 
     private void SeedRoles(ToDoContext context)
