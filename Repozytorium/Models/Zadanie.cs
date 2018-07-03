@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Repozytorium.Models
 {
@@ -24,12 +20,14 @@ namespace Repozytorium.Models
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:MM tt}", ApplyFormatInEditMode = true)]
     public System.DateTime Termin { get; set; }
 
-    // wykonane- 1, niewykonane - 0)
-    public bool Status { get; set; }
+    // wykonane- 1, niewykonane - 0
+    public StatusZadania Status { get; set; }
 
     //- Nazwa zadania(max 50zn, pole obowiązkowe)
     //- opis zadania(max. 2000 zn, pole nieobwiązkowe)
     //- Termin wykonania(data i czas wykonania, pole nieobowiązkowe)
     //- Status(wykonane/niewykonane)
   }
+
+  public enum StatusZadania { Wykonane = 1, Niewykonane = 0 };
 }
