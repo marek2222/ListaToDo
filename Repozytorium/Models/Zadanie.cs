@@ -2,6 +2,8 @@
 
 namespace Repozytorium.Models
 {
+  public enum StatusZadania { Wykonane = 1, Niewykonane = 0 };
+
   public class Zadanie
   {
     public Zadanie() { }
@@ -20,8 +22,8 @@ namespace Repozytorium.Models
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:MM tt}", ApplyFormatInEditMode = true)]
     public System.DateTime Termin { get; set; }
 
-    // wykonane- 1, niewykonane - 0
-    public StatusZadania Status { get; set; }
+    // wykonane- true, niewykonane - false
+    public bool Status { get; set; }
 
     //- Nazwa zadania(max 50zn, pole obowiązkowe)
     //- opis zadania(max. 2000 zn, pole nieobwiązkowe)
@@ -29,5 +31,4 @@ namespace Repozytorium.Models
     //- Status(wykonane/niewykonane)
   }
 
-  public enum StatusZadania { Wykonane = 1, Niewykonane = 0 };
 }

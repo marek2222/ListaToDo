@@ -86,7 +86,7 @@ namespace Repozytorium.Migrations
                         Nazwa = c.String(nullable: false, maxLength: 50),
                         Opis = c.String(maxLength: 2000),
                         Termin = c.DateTime(nullable: false),
-                        Status = c.Int(nullable: false),
+                        Status = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

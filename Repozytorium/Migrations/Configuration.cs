@@ -18,11 +18,11 @@ namespace Repozytorium.Migrations
     protected override void Seed(Repozytorium.Models.ToDoContext context)
     {
       // Do debugowania metody seed    
-      // if (System.Diagnostics.Debugger.IsAttached == false)    
-      // System.Diagnostics.Debugger.Launch();    
-      //SeedRoles(context);
-      //SeedUsers(context);
-      //SeedZadania(context);
+      //if (System.Diagnostics.Debugger.IsAttached == false)
+      //  System.Diagnostics.Debugger.Launch();
+      SeedRoles(context);
+      SeedUsers(context);
+      SeedZadania(context);
     }
 
     private void SeedRoles(ToDoContext context)
@@ -66,7 +66,7 @@ namespace Repozytorium.Migrations
 
     private void SeedZadania(ToDoContext context)
     {
-      var idUzytkownika = context.Set<Uzytkownik>().Where(u => u.UserName == "Admin").FirstOrDefault().Id;
+      var idUzytkownika = context.Set<Uzytkownik>().Where(u => u.UserName == "admin@o2.pl").FirstOrDefault().Id;
       for (int i = 1; i <= 5; i++)
       {
         var zad = new Zadanie()
@@ -75,7 +75,7 @@ namespace Repozytorium.Migrations
           Nazwa = "Zadanie" + i.ToString(),
           Opis = "Opis zadania" + i.ToString(),
           Termin = DateTime.Now.AddDays(-i),
-          Status = (i % 2 + 2) % 2 == 1 ? StatusZadania.Wykonane : StatusZadania.Niewykonane
+          Status = (((i % 2 + 2) % 2 == 0) ? true : false)
         };
         context.Set<Zadanie>().AddOrUpdate(zad);
       }
