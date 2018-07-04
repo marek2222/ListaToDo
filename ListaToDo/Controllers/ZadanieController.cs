@@ -17,7 +17,17 @@ namespace ListaToDo.Controllers
     // GET: Zadanie
     public ActionResult Index()
     {
-      return View(db.Zadania.ToList());
+      var zadania = PobierzZadania();
+      return View();
+    }
+
+    private List<Zadanie> PobierzZadania()
+    {
+      // pobranie natychmiast danych
+      //return db.Zadania.ToList();
+
+      // odroczone (opóźnione) wykonanie (ang. Deferred Execution)
+      return db.Zadania.AsNoTracking().ToList();
     }
 
     // GET: Zadanie/Details/5
