@@ -84,6 +84,8 @@ namespace ListaToDo.Controllers
     {
       if (ModelState.IsValid)
       {
+        if (zadanie.Opis.Length > 50)
+          zadanie.Opis = zadanie.Opis.Substring(0, 50) + "...";
         db.Entry(zadanie).State = EntityState.Modified;
         db.SaveChanges();
         return RedirectToAction("Index");
