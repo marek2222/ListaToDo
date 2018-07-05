@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Repozytorium.IRepo;
 
 namespace Repozytorium.Models
 {
@@ -37,7 +38,7 @@ namespace Repozytorium.Models
   }
 
 
-  public class ToDoContext : IdentityDbContext
+  public class ToDoContext : IdentityDbContext, IToDoContext
   {
     public ToDoContext()
         : base("DefaultConnection")

@@ -7,27 +7,24 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Repozytorium.Models;
+using Repozytorium.Repo;
+using Repozytorium.IRepo;
 
 namespace ListaToDo.Controllers
 {
   public class ZadanieController : Controller
   {
-    private ToDoContext db = new ToDoContext();
+    private readonly IZadanieRepo _repo;
+    public ZadanieController(IZadanieRepo repo)
+    {
+      _repo = repo;
+    }
 
     // GET: Zadanie
     public ActionResult Index()
     {
-      var zadania = PobierzZadania();
-      return View();
-    }
-
-    private List<Zadanie> PobierzZadania()
-    {
-      // pobranie natychmiast danych
-      //return db.Zadania.ToList();
-
-      // odroczone (opóźnione) wykonanie (ang. Deferred Execution)
-      return db.Zadania.AsNoTracking().ToList();
+      var zadania = _repo.PobierzZadania();
+      return View(zadania.ToList());
     }
 
     // GET: Zadanie/Details/5
@@ -37,7 +34,7 @@ namespace ListaToDo.Controllers
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
-      Zadanie zadanie = db.Zadania.Find(id);
+      Zadanie zadanie = _repo.PobierzZadaniePrzezID(id);
       if (zadanie == null)
       {
         return HttpNotFound();
@@ -60,13 +57,19 @@ namespace ListaToDo.Controllers
     {
       if (ModelState.IsValid)
       {
-        if (zadanie.Opis.Length > 50)
-          zadanie.Opis = zadanie.Opis.Substring(0, 50) + "...";
-        db.Zadania.Add(zadanie);
-        db.SaveChanges();
-        return RedirectToAction("Index");
+        Opis50zWielokropkiem(zadanie);
+        try
+        {
+          _repo.Dodaj(zadanie);
+          _repo.SaveChanges();
+          return RedirectToAction("Index");
+          //return RedirectToAction("MojeZadania");
+        }
+        catch (Exception ex)
+        {
+          return View(zadanie);
+        }
       }
-
       return View(zadanie);
     }
 
@@ -77,7 +80,7 @@ namespace ListaToDo.Controllers
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
-      Zadanie zadanie = db.Zadania.Find(id);
+      Zadanie zadanie = _repo.PobierzZadaniePrzezID(id);
       if (zadanie == null)
       {
         return HttpNotFound();
@@ -94,14 +97,14 @@ namespace ListaToDo.Controllers
     {
       if (ModelState.IsValid)
       {
-        if (zadanie.Opis.Length > 50)
-          zadanie.Opis = zadanie.Opis.Substring(0, 50) + "...";
-        db.Entry(zadanie).State = EntityState.Modified;
-        db.SaveChanges();
+        Opis50zWielokropkiem(zadanie);
+        _repo.Aktualizuj(zadanie);
+        _repo.SaveChanges();
         return RedirectToAction("Index");
       }
       return View(zadanie);
     }
+
 
     // GET: Zadanie/Delete/5
     public ActionResult Delete(int? id)
@@ -110,7 +113,7 @@ namespace ListaToDo.Controllers
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
-      Zadanie zadanie = db.Zadania.Find(id);
+      Zadanie zadanie = _repo.PobierzZadaniePrzezID(id);
       if (zadanie == null)
       {
         return HttpNotFound();
@@ -123,19 +126,32 @@ namespace ListaToDo.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult DeleteConfirmed(int id)
     {
-      Zadanie zadanie = db.Zadania.Find(id);
-      db.Zadania.Remove(zadanie);
-      db.SaveChanges();
+      _repo.UsunZadanie(id);
+      try
+      {
+        _repo.SaveChanges();
+      }
+      catch (Exception ex)
+      {
+        return RedirectToAction("Delete", new { id = id, blad = true });
+      }
       return RedirectToAction("Index");
     }
 
-    protected override void Dispose(bool disposing)
+    //protected override void Dispose(bool disposing)
+    //{
+    //  if (disposing)
+    //  {
+    //    db.Dispose();
+    //  }
+    //  base.Dispose(disposing);
+    //}
+
+    private void Opis50zWielokropkiem(Zadanie zadanie)
     {
-      if (disposing)
-      {
-        db.Dispose();
-      }
-      base.Dispose(disposing);
+      if (zadanie.Opis.Length > 50)
+        zadanie.Opis = zadanie.Opis.Substring(0, 50) + "...";
     }
+
   }
 }
