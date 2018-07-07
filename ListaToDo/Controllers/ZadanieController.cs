@@ -43,6 +43,7 @@ namespace ListaToDo.Controllers
     }
 
     // GET: Zadanie/Create
+    [Authorize]
     public ActionResult Create()
     {
       return View();
@@ -51,6 +52,7 @@ namespace ListaToDo.Controllers
     // POST: Zadanie/Create
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    [Authorize]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Create([Bind(Include = "Id,Nazwa,Opis,Termin,Status")] Zadanie zadanie)
@@ -74,6 +76,7 @@ namespace ListaToDo.Controllers
     }
 
     // GET: Zadanie/Edit/5
+    [Authorize]
     public ActionResult Edit(int? id)
     {
       if (id == null)
@@ -91,23 +94,33 @@ namespace ListaToDo.Controllers
     // POST: Zadanie/Edit/5
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    [Authorize]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Edit([Bind(Include = "Id,Nazwa,Opis,Termin,Status")] Zadanie zadanie)
     {
       if (ModelState.IsValid)
       {
-        Opis50zWielokropkiem(zadanie);
-        _repo.Aktualizuj(zadanie);
-        _repo.SaveChanges();
-        return RedirectToAction("Index");
+        try
+        {
+          Opis50zWielokropkiem(zadanie);
+          _repo.Aktualizuj(zadanie);
+          _repo.SaveChanges();
+          //return RedirectToAction("Index");
+        }
+        catch
+        {
+          ViewBag.Blad = true;
+          return View(zadanie);
+        }
       }
+      ViewBag.Blad = false;
       return View(zadanie);
     }
 
-
     // GET: Zadanie/Delete/5
-    public ActionResult Delete(int? id)
+    [Authorize]
+    public ActionResult Delete(int? id, bool? blad)
     {
       if (id == null)
       {
@@ -118,10 +131,13 @@ namespace ListaToDo.Controllers
       {
         return HttpNotFound();
       }
+      if (blad != null)
+        ViewBag.Blad = true;
       return View(zadanie);
     }
 
     // POST: Zadanie/Delete/5
+    [Authorize]
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public ActionResult DeleteConfirmed(int id)
