@@ -23,8 +23,8 @@ namespace ListaToDo.App_Start
       //// ...or you can register individual controlllers manually.
       //builder.RegisterType<HomeController>().InstancePerRequest();
 
-      builder.RegisterType<ToDoContext>().As<IToDoContext>();
-      builder.RegisterType<ZadanieRepo>().As<IZadanieRepo>();
+      builder.RegisterType<ToDoContext>().As<IToDoContext>().InstancePerRequest();
+      builder.RegisterType<ZadanieRepo>().As<IZadanieRepo>().InstancePerRequest();
 
       ////// OPTIONAL: Register model binders that require DI.
       //builder.RegisterModelBinders(typeof(MvcApplication).Assembly);
