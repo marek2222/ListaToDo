@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using ListaToDo.Models;
+using Repozytorium.Models;
+using Repozytorium;
 
 namespace ListaToDo
 {

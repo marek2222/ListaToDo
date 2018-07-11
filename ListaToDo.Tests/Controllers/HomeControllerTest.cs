@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+﻿using ListaToDo.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ListaToDo;
-using ListaToDo.Controllers;
+using System.Web.Mvc;
 
 namespace ListaToDo.Tests.Controllers
 {
-    [TestClass]
+  [TestClass]
     public class HomeControllerTest
     {
         [TestMethod]
