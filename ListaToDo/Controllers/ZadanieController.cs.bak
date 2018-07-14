@@ -1,9 +1,14 @@
-﻿using Repozytorium.IRepo;
-using Repozytorium.Models;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using Repozytorium.Models;
+using Repozytorium.Repo;
+using Repozytorium.IRepo;
 
 namespace ListaToDo.Controllers
 {
@@ -26,18 +31,6 @@ namespace ListaToDo.Controllers
     public ActionResult IndexTabs()
     {
       return View();
-    }
-
-    public ActionResult _ZadaniaWykonane()
-    {
-      var zadania = _repo.PobierzZadania().Where(x => x.Status == true);
-      return PartialView(zadania.ToList());
-    }
-
-    public ActionResult _ZadaniaDoWykonania()
-    {
-      var zadania = _repo.PobierzZadania().Where(x => x.Status == false);
-      return PartialView(zadania.ToList());
     }
 
     // GET: Zadanie/Details/5

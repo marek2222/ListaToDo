@@ -329,6 +329,9 @@
     <Content Include="Views\Zadanie\Details.cshtml" />
     <Content Include="Views\Zadanie\Edit.cshtml" />
     <Content Include="Views\Zadanie\Index.cshtml" />
+    <Content Include="Views\Zadanie\IndexTabs.cshtml" />
+    <Content Include="Views\Zadanie\_ZadaniaDoWykonania.cshtml" />
+    <Content Include="Views\Zadanie\_ZadaniaWykonane.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

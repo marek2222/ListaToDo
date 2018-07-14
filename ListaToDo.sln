@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Express 14 for Web
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListaToDo", "ListaToDo\ListaToDo.csproj", "{DA21A1CC-28E4-4CB4-AB08-161522E6E736}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListaToDo.Tests", "ListaToDo.Tests\ListaToDo.Tests.csproj", "{32BB86FB-6AA6-492C-8454-36FEBDF47449}"

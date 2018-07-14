@@ -17,7 +17,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        @Html.ActionLink("Lista ToDo", "Index", "Zadanie", new { area = "" }, new { @class = "navbar-brand" })
+        @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
@@ -25,13 +25,12 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Zadania <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li>@Html.ActionLink("Lista zadań",                       "Index",        "Zadanie")</li>
-              <li>@Html.ActionLink("Zadania w zakładkach",              "IndexTabs",    "Zadanie")</li>
-              <li>@Html.ActionLink("Zadania wykonane - PartialView",    "_ZadaniaWykonane", "Zadanie")</li>
-              <li>@Html.ActionLink("ZadaniaDoWykonania - PartialView",  "_ZadaniaDoWykonania","Zadanie")</li>
+              <li>@Html.ActionLink("Lista zadań", "Index", "Zadanie")</li>
+              <li>@Html.ActionLink("_Zadania wykonane", "_ZadaniaWykonane", "Zadanie")</li>
+              <li>@Html.ActionLink("_ZadaniaDoWykonania", "_ZadaniaDoWykonania", "Zadanie")</li>
+              <li>@Html.ActionLink("Lista jako PartialView", "_ZadaniaPartial", "Zadanie")</li>
 
               <li class="divider"></li>
-              <li><a href="#">Poniżej zadania tylko dla zalogowanych</a></li>
               @if (User.Identity.IsAuthenticated)
               {
               <li>@Html.ActionLink("Dodaj zadanie", "Create", "Zadanie")</li>

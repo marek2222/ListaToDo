@@ -1,0 +1,35 @@
+﻿@{
+  ViewBag.Title = "Home Page";
+  <link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" type="text/css" />
+}
+
+
+<h2 class="demoHeaders">JQuery UI Tabs</h2>
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-test">Test</a></li>
+    <li><a href="/Zadanie/_ZadaniaWykonane">Zadania wykonane</a></li>
+    <li><a href="/Zadanie/_ZadaniaDoWykonania">Zadania do wykonania</a></li>
+ </ul>
+  <div id="tabs-test">
+    <h4>
+      If the content pane for a tab references a HTML element then the tab will be page-loaded;<br />
+      If the content pane for a tab references a URL, the tab will be loaded via AJAX when the tab is selected;
+    </h4>
+  </div>
+</div>
+
+<br /><br />
+
+
+@section Scripts{
+  <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      $("#tabs").tabs();
+    });
+
+  </script>
+}
+
