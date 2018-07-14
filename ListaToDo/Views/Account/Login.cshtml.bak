@@ -58,17 +58,15 @@
   </div>
 </div>
 
-
 @section Scripts {
   @Scripts.Render("~/bundles/jqueryval")
-
   <script type="text/javascript">
     $('#Email').focus();
     $('#Email').val('admin@o2.pl');
     $('#Password').focus();
     $('#Password').val('12345678');
-    $("input[type='submit'][value='Log in']").focus();
-    $("input[type='submit'][value='Log in']").click();
+    //$('#Email').val('admin@o2.pl');
+
   </script>
 
 }
