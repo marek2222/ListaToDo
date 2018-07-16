@@ -25,17 +25,18 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Zadania <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li>@Html.ActionLink("Lista zadań",                       "Index",        "Zadanie")</li>
-              <li>@Html.ActionLink("Zadania w zakładkach",              "IndexTabs",    "Zadanie")</li>
-              <li>@Html.ActionLink("Zadania wykonane - PartialView",    "_ZadaniaWykonane", "Zadanie")</li>
-              <li>@Html.ActionLink("ZadaniaDoWykonania - PartialView",  "_ZadaniaDoWykonania","Zadanie")</li>
+              <li>@Html.ActionLink("Lista zadań", "Index", "Zadanie")</li>
+              <li>@Html.ActionLink("Zadania w zakładkach", "IndexTabs", "Zadanie")</li>
+              <li>@Html.ActionLink("Zadania wykonane - PartialView", "_ZadaniaWykonane", "Zadanie")</li>
+              <li>@Html.ActionLink("ZadaniaDoWykonania - PartialView", "_ZadaniaDoWykonania", "Zadanie")</li>
 
               <li class="divider"></li>
-              <li><a href="#">Poniżej zadania tylko dla zalogowanych</a></li>
               @if (User.Identity.IsAuthenticated)
               {
               <li>@Html.ActionLink("Dodaj zadanie", "Create", "Zadanie")</li>
               }
+              <li class="divider"></li>
+              <li>@Html.ActionLink("Klienci ViewModel z tabel: Klienci i Zamówienia", "Index", "KlientVM")</li>
             </ul>
           </li>
         </ul>

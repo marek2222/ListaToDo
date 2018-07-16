@@ -3,6 +3,7 @@ namespace Repozytorium.Migrations
   using Microsoft.AspNet.Identity;
   using Microsoft.AspNet.Identity.EntityFramework;
   using Models;
+  using Models.VM;
   using System;
   using System.Data.Entity.Migrations;
   using System.Linq;
@@ -23,6 +24,8 @@ namespace Repozytorium.Migrations
       SeedRoles(context);
       SeedUsers(context);
       SeedZadania(context);
+      SeedKlienci(context);
+      SeedZamowienia(context);
     }
 
     private void SeedRoles(ToDoContext context)
@@ -82,6 +85,40 @@ namespace Repozytorium.Migrations
       context.SaveChanges();
     }
 
+
+    private void SeedKlienci(ToDoContext context)
+    {
+      for (int i = 1; i <= 5; i++)
+      {
+        var klient = new Klient()
+        {
+          KlientID = i,
+          Nazwa  = "darek" + i.ToString(),
+          Addres = "Lodz_" + i.ToString(),
+          Komorka = "12345678" + i.ToString(),
+          DataUrodzenia = DateTime.Now.AddDays(-i - 40),
+          EmailID = "darek" + i.ToString() + "@o2.pl"
+        };
+        context.Set<Klient>().AddOrUpdate(klient);
+      }
+      context.SaveChanges();
+    }
+
+    private void SeedZamowienia(ToDoContext context)
+    {
+      for (int i = 1; i <= 3; i++)
+      {
+        var zam = new Zamowienie()
+        {
+          ZamowienieID = i,
+          KlientID = i,
+          DataZamowienia = DateTime.Now.AddDays(-i),
+          CenaZamowienia = 1000 * i
+        };
+        context.Set<Zamowienie>().AddOrUpdate(zam);
+      }
+      context.SaveChanges();
+    }
 
   }
 }

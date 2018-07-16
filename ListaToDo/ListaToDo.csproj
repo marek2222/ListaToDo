@@ -77,8 +77,8 @@
       <HintPath>..\packages\Microsoft.Extensions.Primitives.1.0.1\lib\netstandard1.0\Microsoft.Extensions.Primitives.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KlientVMController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ZadanieController.cs" />
     <Compile Include="Global.asax.cs">
@@ -332,6 +333,7 @@
     <Content Include="Views\Zadanie\IndexTabs.cshtml" />
     <Content Include="Views\Zadanie\_ZadaniaDoWykonania.cshtml" />
     <Content Include="Views\Zadanie\_ZadaniaWykonane.cshtml" />
+    <Content Include="Views\KlientVM\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -70,6 +70,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -126,18 +128,29 @@
     <Compile Include="Migrations\201807031434564_startowa.Designer.cs">
       <DependentUpon>201807031434564_startowa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807141256512_ViewModel KlienciIZamoweienia.cs" />
+    <Compile Include="Migrations\201807141256512_ViewModel KlienciIZamoweienia.Designer.cs">
+      <DependentUpon>201807141256512_ViewModel KlienciIZamoweienia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="IRepo\IToDoContext.cs" />
     <Compile Include="Models\ToDoContext.cs" />
-    <Compile Include="Models\Views\AccountViewModels.cs" />
+    <Compile Include="Models\Uzytkownik.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="Models\VM\Klient.cs" />
+    <Compile Include="Models\VM\Zamowienie.cs" />
     <Compile Include="Models\Zadanie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IRepo\IZadanieRepo.cs" />
     <Compile Include="Repo\ZadanieRepo.cs" />
+    <Compile Include="ViewModels\KlientViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807031434564_startowa.resx">
       <DependentUpon>201807031434564_startowa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807141256512_ViewModel KlienciIZamoweienia.resx">
+      <DependentUpon>201807141256512_ViewModel KlienciIZamoweienia.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

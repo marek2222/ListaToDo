@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Repozytorium;
 using Repozytorium.Models;
-using Repozytorium.Models.Views;
+using Repozytorium.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
