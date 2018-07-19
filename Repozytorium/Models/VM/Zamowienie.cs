@@ -1,9 +1,10 @@
 namespace Repozytorium.Models.VM
 {
+  using IRepo.VM;
   using System;
   using System.ComponentModel.DataAnnotations;
 
-  public partial class Zamowienie
+  public class Zamowienie : IZamowienie
   {
     [Key]
     [Required]

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Repozytorium.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,9 +7,9 @@ using System.Web;
 
 namespace Repozytorium.ViewModels
 {
-  public class KlientViewModel
+  public class KlientViewModel : IKlientViewModel
   {
-    [Key]
+    [Display(Name = "Id:")]
     public int ID { get; set; }
 
     // Klient

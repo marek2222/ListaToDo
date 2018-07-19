@@ -9,13 +9,14 @@ using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Repozytorium.IRepo;
 using Repozytorium.Models.VM;
+using Repozytorium.ViewModels;
 
 namespace Repozytorium.Models
 {
   public class ToDoContext : IdentityDbContext, IToDoContext
   {
     public ToDoContext()
-        : base("DefaultConnection")
+        : base("ListaToDo")
     {
     }
 
@@ -29,6 +30,8 @@ namespace Repozytorium.Models
 
     public DbSet<Klient> Klienci { get; set; }
     public DbSet<Zamowienie> Zamowienia { get; set; }
+    public DbSet<KlientViewModel> KlienciViewModel { get; set; }
+    public DbSet<ZadanieViewModel> ZadaniaViewModel { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
@@ -54,8 +57,10 @@ namespace Repozytorium.Models
       modelBuilder.Entity<Klient>().Property(e => e.EmailID).IsUnicode(false);
       modelBuilder.Entity<Zamowienie>().Property(e => e.CenaZamowienia).HasPrecision(18, 0);
 
+      //modelBuilder.Entity<Zamowienie>().HasRequired(x => x.Klient)
+      //.WithMany(x => x.Zamowienia).HasForeignKey(x => x.KlientID)
+      //.WillCascadeOnDelete(true);
     }
 
-    public System.Data.Entity.DbSet<Repozytorium.ViewModels.KlientViewModel> KlientViewModels { get; set; }
   }
 }

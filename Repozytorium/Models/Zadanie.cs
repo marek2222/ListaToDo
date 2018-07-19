@@ -5,12 +5,9 @@ namespace Repozytorium.Models
 {
   public enum StatusZadania { Wykonane = 1, Niewykonane = 0 };
 
-  public class Zadanie
+  public class Zadanie : BaseModel
   {
     public Zadanie() { }
-
-    [Display(Name = "Id:")]
-    public int Id { get; set; }
 
     [Required]
     [Display(Name = "Nazwa zadania"), MaxLength(50)]

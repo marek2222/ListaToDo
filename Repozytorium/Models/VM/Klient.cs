@@ -1,10 +1,10 @@
 namespace Repozytorium.Models.VM
 {
+  using IRepo.VM;
   using System;
   using System.ComponentModel.DataAnnotations;
-  using System.ComponentModel.DataAnnotations.Schema;
 
-  public class Klient
+  public class Klient : IKlient
   {
     [Key]
     [Required]
