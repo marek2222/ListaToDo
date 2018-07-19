@@ -18,6 +18,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTodo_Client", "MyTodo_Cli
 		{3A506FAA-E0EF-4BB9-8732-599932443561} = {3A506FAA-E0EF-4BB9-8732-599932443561}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Baza", "Baza", "{ADD96839-FEA4-47E2-9A3D-EC747A5A6BA3}"
+	ProjectSection(SolutionItems) = preProject
+		ListaToDo.bak = ListaToDo.bak
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
